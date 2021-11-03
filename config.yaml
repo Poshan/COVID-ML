@@ -1,0 +1,12 @@
+data:
+  covid_data: './data/Spain/CYL/covid_data/Cyl_hzone_covid_01March_20Nov.csv'
+  geometry: './data/Spain/CYL/boundary/health_zones.shp'
+  preprocessed: './data/Spain/CYL/Processed_data/CYL_cases_neighbors_shifted_new.csv'
+  mobility_dir: './data/Spain/CYL/mobility_matrices/BSC'
+  cyl_covid_path: './data/Spain/CYL/Processed_data/CYL_cases_neighbors_shifted_new.csv'
+  computed: './data/Spain/CYL/Processed_data/cyl_with_BSC_mob_wts_with_7days_lag_new.csv'
+constants:
+  lag_days_preprocess: 14
+  lag_days_computation: 7
+  random_state: 42
+  health_zones_n: 5

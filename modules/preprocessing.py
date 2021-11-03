@@ -27,7 +27,7 @@ import geopandas as gpd
 ###shifted cases in lag days, cumulative cases, 
 #######################################################################
 
-def preprocessing(data, geometry, lag_days):
+def preprocessing(data: str, geometry: str, lag_days: int) -> pd.DataFrame:
     '''
          Assumptions in data
              fieldname for daily cases - 'daily_new_infected'
