@@ -29,14 +29,8 @@ from datetime import datetime, timedelta
 ##"Processed_data/CYL_cases_neighbors_shifted.csv" - cyl_covid_path
 ##"covid_data/Cyl_hzone_covid_01March_20Nov.csv" - daily_cases_path
 
-def wts_computations(mobility_dir, cyl_covid_path, lag_days):
+def wts_computations(mobility_dir: str, cyl_covid_path: str, lag_days: int) -> pd.DataFrame:
     print("weights computations")
-    
-    
-
-#####################################################setting working directory
-    os.chdir(mobility_dir)
-
 
 ########################################################defining the dataframes
     cyl_covid = pd.read_csv(cyl_covid_path, encoding = 'latin_1')
@@ -86,13 +80,13 @@ def wts_computations(mobility_dir, cyl_covid_path, lag_days):
     
     ##################################################Mobility weights computations
     #for the unique list of 245 healthzones
-    one_day_df = pd.read_csv(os.path.join(mobility_dir, "20200301.csv"), index_col="hzcode_orig")
+    one_day_df = pd.read_csv(mobility_dir + "/20200301.csv", index_col="hzcode_orig")
     one_day_df.head()
     indices = one_day_df.index.unique()
     
     
     #################################function that adds mobility for the delta days
-    def sum_mobility(date):
+    def sum_mobility(date: str) -> np.ndarray:
       d = datetime.strptime(date, "%Y-%m-%d")
       sum_mobility = np.zeros((245,245))
       for i in range(1, lag_days + 1):
@@ -120,7 +114,6 @@ def wts_computations(mobility_dir, cyl_covid_path, lag_days):
     df_weight_new = pd.DataFrame(columns=("date","hzcodes","weights"))
     
     for d in dates_cases:
-      # print(d)
       if d in dates_cases:
         ##summing up the mobility for last lag_days
         df_tmp = sum_mobility(d)

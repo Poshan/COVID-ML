@@ -4,7 +4,7 @@ import os
 
 ###class mobility conversion
 class MobilityConversion:
-    def __init__(self, mob, intersection, id_req, id_mob, output):
+    def __init__(self, mob: str, intersection: str, id_req: str, id_mob: str, output: str):
         '''
         .gz files inside the mob folder assumed
         
